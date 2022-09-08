@@ -1,0 +1,39 @@
+package com.skillstorm.demo.controllers;
+
+import java.util.Optional;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
+
+import com.skillstorm.demo.models.Goal;
+import com.skillstorm.demo.services.interfaces.GoalServiceInterface;
+import com.skillstorm.demo.services.unitOfWork.IUnitOfWork;
+
+@RestController
+@CrossOrigin("*")
+@RequestMapping("api/v1/goals")
+public class GoalController {
+	
+	private final IUnitOfWork unitOfWork;
+	private GoalServiceInterface goalServiceInterface;
+	
+	@Autowired
+	public GoalController(IUnitOfWork unitOfWork, GoalServiceInterface goalServiceInterface) {
+		this.unitOfWork = unitOfWork;
+		this.goalServiceInterface = goalServiceInterface;
+	}
+	
+	@GetMapping("/{id}")
+	public Goal findById(@PathVariable int id) {
+		Optional<Goal> goal = unitOfWork.goal().findById(id);
+		return goal.isPresent() ? goal.get() : null;
+	}
+	
+	@PostMapping
+	
+	
+}

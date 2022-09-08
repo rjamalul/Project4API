@@ -1,0 +1,11 @@
+package com.skillstorm.demo.repositories;
+
+import org.springframework.stereotype.Repository;
+
+import com.skillstorm.demo.models.Goal;
+import com.skillstorm.demo.models.User;
+
+@Repository
+public interface UserRepository extends GenericRepository<User, Integer> {
+
+}

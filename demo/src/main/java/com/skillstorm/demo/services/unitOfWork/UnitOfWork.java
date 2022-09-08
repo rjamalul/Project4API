@@ -1,0 +1,26 @@
+package com.skillstorm.demo.services.unitOfWork;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import com.skillstorm.demo.repositories.GoalRepository;
+import com.skillstorm.demo.services.implementation.GoalService;
+import com.skillstorm.demo.services.interfaces.GoalServiceInterface;
+
+@Service
+public class UnitOfWork implements IUnitOfWork {
+	@Autowired
+	private GoalServiceInterface goalService;
+	
+	public UnitOfWork(
+		GoalRepository goalRepository	
+	) {
+		this.goalService = new GoalService(goalRepository);
+	}
+
+	@Override
+	public GoalServiceInterface goal() {
+		return goalService;
+	}
+
+}

@@ -1,0 +1,14 @@
+package com.skillstorm.demo.models;
+
+import javax.persistence.Entity;
+import javax.persistence.Table;
+
+@Entity
+@Table(name = "Goal")
+public class Goal {
+	
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Column(name = "goal_id")
+	private
+}

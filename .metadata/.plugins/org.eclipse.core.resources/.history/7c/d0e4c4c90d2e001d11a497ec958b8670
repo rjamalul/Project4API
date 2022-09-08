@@ -1,0 +1,33 @@
+package com.skillstorm.demo.services.implementation;
+
+import java.util.Set;
+
+import javax.transaction.Transactional;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import com.skillstorm.demo.models.Goal;
+import com.skillstorm.demo.repositories.GenericRepositoryImpl;
+import com.skillstorm.demo.repositories.GoalRepository;
+import com.skillstorm.demo.services.interfaces.GoalServiceInterface;
+
+@Service
+@Transactional
+public class GoalService extends GenericRepositoryImpl<Goal, Integer> implements GoalServiceInterface{
+	private final GoalRepository goalRepository;
+	
+	@Autowired
+	public GoalService(GoalRepository goalRepository) {
+		super(goalRepository);
+		this.goalRepository = goalRepository;
+	}
+	
+	@Override
+	public Goal update(Goal goal) {
+		Set<Goal> goalSet = new HashSet<>();
+		goalSet.add(goal);
+		
+	}
+
+}
