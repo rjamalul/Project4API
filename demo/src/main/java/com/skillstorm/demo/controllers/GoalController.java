@@ -1,5 +1,6 @@
 package com.skillstorm.demo.controllers;
 
+import java.security.Principal;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
@@ -16,6 +17,7 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.skillstorm.demo.models.Goal;
@@ -46,6 +48,9 @@ public class GoalController {
 //		return goal.isPresent() ? goal.get() : null;
 //	}
 	
+
+	
+	
 	@GetMapping("/getGoals") 
 	public ResponseEntity<List<Goal>> getGoals() {
 		List<Goal> goals = new ArrayList<Goal>(); 
@@ -59,14 +64,14 @@ public class GoalController {
 	@PostMapping
 	public ResponseEntity<String> createGoal(@RequestBody Goal goal) {
 		goalServiceInterface.saveGoal(goal);
-		return new ResponseEntity<>(new String("Last"), HttpStatus.CREATED);
+		return new ResponseEntity<>(new String("{}"), HttpStatus.CREATED);
 	}
 	
 	@RequestMapping(value = "/updateGoal", method = RequestMethod.POST)
 	@PostMapping
 	public ResponseEntity<String> updateGoal(@RequestBody Goal goal) {
 		goalServiceInterface.saveGoal(goal);
-		return new ResponseEntity<>(new String("Last"), HttpStatus.CREATED);
+		return new ResponseEntity<>(new String("{}"), HttpStatus.CREATED);
 	}
 	
 //	@PutMapping("/{id}")
@@ -84,6 +89,14 @@ public class GoalController {
 	@DeleteMapping("/{id}")
 	public boolean deleteGoal(@PathVariable int id) {
 		boolean isDeleted = unitOfWork.goal().delete(id);
-		return isDeleted;
+		return !isDeleted;
+	}
+	
+	
+	@RequestMapping("user")
+	@ResponseBody
+	public Principal user(Principal principal)
+	{
+		return principal;
 	}
 }

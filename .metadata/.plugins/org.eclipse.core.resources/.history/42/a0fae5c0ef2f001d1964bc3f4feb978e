@@ -1,0 +1,15 @@
+//package com.skillstorm.demo.configurations;
+//
+//import org.springframework.context.annotation.Configuration;
+//
+//
+//@Configuration
+//@EnableWebSecurity
+//public class SecurityConfig extends WebSecurityConfigurerAdapter
+//{
+//
+//	@Override
+//	public void configure(HttpSecurity httpSecurity) {
+//		
+//	}
+//}

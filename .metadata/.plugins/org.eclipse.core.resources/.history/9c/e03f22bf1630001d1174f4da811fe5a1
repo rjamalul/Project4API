@@ -1,0 +1,28 @@
+package com.skillstorm.demo.configurations;
+
+import org.springframework.context.annotation.Configuration;
+import org.springframework.security.config.annotation.web.builders.HttpSecurity;
+import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
+import org.springframework.security.web.csrf.CookieCsrfTokenRepository;
+
+@Configuration
+public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
+	
+	@Override
+	protected void configure(HttpSecurity http) throws Exception {
+		
+		//Don't use formLogin() with angular app
+		//http.formLogin();
+		http.httpBasic();
+		//This will generate a CSRF Cookie
+		//Allows us to access any endpoint, I now need X-XSRF-TOKEN header containing the value of cookie 
+		http.csrf().csrfTokenRepository(CookieCsrfTokenRepository.withHttpOnlyFalse());
+		//Every HTTP request must be authenticated
+		http.authorizeHttpRequests().mvcMatchers("/**").authenticated();
+		http.authorizeHttpRequests().mvcMatchers("/logout/**").permitAll();
+		//Clears JSESSIONID cookie and invalidates session
+		//Logs out and requires reauthentication.
+		http.logout().deleteCookies("JSESSIONID").invalidateHttpSession(true);
+	}
+
+}
