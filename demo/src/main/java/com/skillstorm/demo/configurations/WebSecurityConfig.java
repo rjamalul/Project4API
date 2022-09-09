@@ -13,18 +13,7 @@ import java.util.Arrays;
 @Configuration
 public class WebSecurityConfig {
 
-//	 @Bean
-//	    public WebMvcConfigurer corsConfigurer() {
-//	        return new WebMvcConfigurer() {
-//	            @Override
-//	            public void addCorsMappings(CorsRegistry registry) {
-//	                registry.addMapping("/**")
-//	                        .allowedMethods("GET", "POST", "PUT", "DELETE")
-//	                        .allowedHeaders("*")
-//	                        .allowedOrigins("http://localhost:4200/"); // todo change this to front end url
-//	            }
-//	        };
-//	    }
+
 
     @Bean
     public CorsConfigurationSource corsConfigurationSource() {
