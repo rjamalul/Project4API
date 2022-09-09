@@ -6611,3 +6611,6 @@ java.lang.NullPointerException: Cannot read the array length because "this.field
 
 !ENTRY org.springframework.tooling.ls.eclipse.commons 1 0 2022-09-09 10:24:45.733
 !MESSAGE executing callback sts4.classpath.dJEfkZHL SUCCESS [done]
+
+!ENTRY org.eclipse.ui 2 2 2022-09-09 14:53:42.394
+!MESSAGE Invalid property category path: org.springframework.ide.eclipse.beans.ui.properties.ProjectPropertyPage (bundle: org.springframework.ide.eclipse.xml.namespaces, propertyPage: org.springframework.ide.eclipse.beans.ui.namespaces.projectPropertyPage)
