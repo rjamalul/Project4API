@@ -34,19 +34,13 @@ public class GoalController {
 	private final IUnitOfWork unitOfWork;
 	private GoalServiceInterface goalServiceInterface;
 
-//	private GenericRepository<T, Serializable>;
+
 	
 	@Autowired
 	public GoalController(IUnitOfWork unitOfWork, GoalServiceInterface goalServiceInterface) {
 		this.unitOfWork = unitOfWork;
 		this.goalServiceInterface = goalServiceInterface;
 	}
-	
-//	@GetMapping("/{id}")
-//	public Goal findById(@PathVariable int id) {
-//		Optional<Goal> goal = unitOfWork.goal().findById(id);
-//		return goal.isPresent() ? goal.get() : null;
-//	}
 	
 
 	
@@ -56,8 +50,7 @@ public class GoalController {
 		List<Goal> goals = new ArrayList<Goal>(); 
 		goals = goalServiceInterface.findAll();
 		return new ResponseEntity<>(goals, HttpStatus.CREATED);		
-//		Optional<Goal> goal = unitOfWork.goal().findById(id);
-//		return goal.isPresent() ? goal.get() : null;
+
 	}
 	
 	@RequestMapping(value = "/addGoal", method = RequestMethod.POST)
@@ -73,19 +66,7 @@ public class GoalController {
 		goalServiceInterface.saveGoal(goal);
 		return new ResponseEntity<>(new String("{}"), HttpStatus.CREATED);
 	}
-	
-//	@PutMapping("/{id}")
-//	public ResponseEntity<List<Goal>> updateGoal(@PathVariable int id, @RequestBody Goal goal) {
-//		Goal returnGoal = this.unitOfWork.goal().update(goal);
-//		if (returnGoal != null) {
-//			List<Goal> goals = new ArrayList<>();
-//			goals.add(returnGoal);
-//			return new ResponseEntity<>(goals, HttpStatus.OK);
-//		}
-//		
-//		return new ResponseEntity<>(null, HttpStatus.INTERNAL_SERVER_ERROR);
-//	}
-//	
+
 	@DeleteMapping("/{id}")
 	public boolean deleteGoal(@PathVariable int id) {
 		boolean isDeleted = unitOfWork.goal().delete(id);

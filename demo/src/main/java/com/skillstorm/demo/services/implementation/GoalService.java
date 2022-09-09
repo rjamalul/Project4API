@@ -25,16 +25,7 @@ public class GoalService extends GenericRepositoryImpl<Goal, Integer> implements
 		this.goalRepository = goalRepository;
 	}
 	
-//	@Override
-//	public Goal update(Goal goal) {
-//		Set<Goal> goalSet = new HashSet<>();
-//		goalSet.add(goal);
-//		User newUser = new User(
-//				0,
-//				goal.getUserId().getUsername()
-//				
-		
-//	}
+
 	
 	@Override
 	public void saveGoal(Goal goal) {
